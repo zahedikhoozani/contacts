@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html dir="rtl">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="Content-Type" content="text/html"; charset="utf-8">
 		<link rel="stylesheet" href="style1.css" type="text/css">
         <title>دفتر تلفن</title>
     </head>

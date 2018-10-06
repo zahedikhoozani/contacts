@@ -12,12 +12,11 @@
 			<p align="center"><input type="button" value="مخاطب جدید" onclick="window.location.href='form.php'" /></p>
 			<p align="center"><input type="button" value="لیست مخاطبین" onclick="window.location.href='dbread.php'" /></p>
 			<p align="center"><input type="button" value="حذف مخاطبین" onclick="window.location.href='delete.php'" /></p>
-
-			
-			<button class="button" style="vertical-align:middle" onclick="window.location.href='form.php'"><span>form </span></button>
-			<button class="button" style="vertical-align:middle">Hover</button>
-			
 		</form>
 		
     </body>
 </html>
+
+
+			<!--<button class="button" style="vertical-align:middle" onclick="window.location.href='form.php'"><span>form </span></button>
+			<button class="button" style="vertical-align:middle">Hover</button>-->
