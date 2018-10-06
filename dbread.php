@@ -14,6 +14,7 @@
 	$sql = "SELECT fname, lname, phone FROM data";
 	mysqli_query( $conn, 'set names "utf8"' );
 	$result = mysqli_query( $conn, $sql );
+
 	?>
 
 	<table align="center" style="width:50%" border="1">
@@ -30,8 +31,8 @@
 				echo "<tr>";
 				echo "<td align='center'>" . $row[ "fname" ] . "</td>";
 				echo "<td align='center'>" . $row[ "lname" ] . "</td>";
-				echo "<td align='center'>" . $row[ "phone" ] . "</td>";
-				echo "<td class='rem' align='center'><button>حذف</button></td>";
+				echo "<td align='center' class='phone' id=" . $row[ 'phone' ] . ">" . $row[ "phone" ] . "</td>";
+				echo "<td align='center' class='rem'><input type='button' value='حذف' onclick='delfunc()'></td>";
 				echo "</tr>";
 			}
 			echo "</table>";
@@ -41,19 +42,27 @@
 		mysqli_close( $conn );
 		?>
 
-		<form action="delete.php" method="POST" id="my_form">
-			<input type='hidden' name='phone' form='my_form' value="<?php $row[ " phone " ] ?>"/>
-			<p align="center"><input type="submit" value="ثبت تغییرات"/></p>
+		<form action="delete.php" method="POST">
+			<input type='hidden' id='hidden' name='phone' value=''/>
+			<p align="center">
+				<input type="submit" value="ثبت تغییرات"/>
+			</p>
 		</form>
 
-		<p align="center"><input type="button" value="بازگشت" onclick="window.location.href='index.php'"/>
+		<p align="center">
+			<input type="button" value="بازگشت" onclick="window.location.href='index.php'"/>
 		</p>
 
 
 		<script>
 			$( ".rem" ).on( "click", function () {
 				$( this ).parent().remove();
+				//$( this ).siblings(".phone").html( this.siblings(".phone"));
 			} );
+
+			function delfunc( num ) {
+				document.getElementById( "hidden" ).innerHTML = num;
+			}
 		</script>
 </body>
 </html>
