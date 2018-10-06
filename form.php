@@ -10,7 +10,7 @@
             <p align="right">نام:<input type="text" name="fname" size="32"></p>
             <p align="right">نام خانوادگی:<input type="text" name="lname" size="32"></p>
             <p align="right">شماره تلفن:<input type="text" name="mob" size="20"></p>
-            <p align="center"><input type="submit" value="ارسال" name="Submit"><input type="reset" value="از نو" name="B2"></p>
+            <p align="center"><input type="submit" value="ثبت" name="Submit"><input type="reset" value="پاک کردن" name="B2"></p>
 			<p align="center"><input type="button" value="بازگشت" onclick="window.location.href='index.php'" /></p>
         </form>
     </body>
