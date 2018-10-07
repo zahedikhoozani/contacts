@@ -16,7 +16,3 @@
 		
     </body>
 </html>
-
-
-			<!--<button class="button" style="vertical-align:middle" onclick="window.location.href='form.php'"><span>form </span></button>
-			<button class="button" style="vertical-align:middle">Hover</button>-->

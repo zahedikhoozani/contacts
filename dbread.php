@@ -2,7 +2,6 @@
 <html dir="rtl">
 <head>
 	<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
-	<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
 	<title>دفتر تلفن</title>
 	<link rel="stylesheet" href="style1.css">
 </head>
@@ -32,11 +31,10 @@
 				$td2 = "</td>";
 				while ( $row = mysqli_fetch_assoc( $result ) ) {
 					echo "<tr>";
-					echo $td1 . "<input type=\"checkbox\" name=\"phonenum\" value=" . $row[ "phone" ] . ">" . $td2;
+					echo $td1 . "<input type='checkbox' name='phonenum' value=" . $row[ "phone" ] . ">" . $td2;
 					echo $td1 . $row[ "fname" ] . $td2;
 					echo $td1 . $row[ "lname" ] . $td2;
 					echo "<td align='center' id=" . $row[ "phone" ] . ">" . $row[ "phone" ] . $td2;
-					//echo $td1 . "<button class='rem' id=" . $row[ "phone" ] . ">حذف</button>" . $td2;
 					echo "</tr>";
 				}
 				echo "</table>";
@@ -55,15 +53,6 @@
 	</p>
 
 	<p id="test"></p>
-	<script>
-		$( ".rem" ).click( function () {
-			alert( $( ".rem" ).attr( "id" ) );
-		} );
 
-		$( ".rem" ).click( function () {
-			$( this ).parent().parent().remove();
-
-		} );
-	</script>
 </body>
 </html>
