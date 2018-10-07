@@ -31,7 +31,7 @@
 			$td2 = "</td>";
 			while ( $row = mysqli_fetch_assoc( $result ) ) {
 				echo "<tr>";
-				echo $td1 . "<input type='checkbox' name='phonenum' value=" . $row[ "phone" ] . ">" . $td2;
+				echo $td1 . "<input type='radio' name='phonenum' value=" . $row[ "phone" ] . ">" . $td2;
 				echo $td1 . $row[ "fname" ] . $td2;
 				echo $td1 . $row[ "lname" ] . $td2;
 				echo "<td align='center' id=" . $row[ "phone" ] . ">" . $row[ "phone" ] . $td2;
@@ -67,10 +67,15 @@
 	viewrecords();
 	?>
 	<p align="center">
-		<input type="submit" value="حذف"/>
 		<input type="button" value="مخاطب جدید" onclick="window.location.href='form.php'"/>
-		<input type="text" value="جستجو" onkeydown="window.location.href='delete.php'"/>
+		<input type="submit" value="حذف"/>
 	</p>
+	</form>
+	<form action="search.php" method="post">
+		<p>
+			<input type="text" name="search" value="کریم"/>
+			<input type="submit" value="جستجو"/>
+		</p>
 	</form>
 </body>
 </html>
