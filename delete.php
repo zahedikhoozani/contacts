@@ -10,14 +10,13 @@
 	<?php
 	require_once( 'config.php' );
 
-	$phone = $_POST[ "phone" ];
-	echo $phone;
+	$phone = $_POST[ "phonenum" ];
 
 	// sql to delete a record
-	$sql = "DELETE FROM data WHERE phone='$phone'";
+	$sql = "DELETE FROM data WHERE phone=$phone";
 
 	if ( mysqli_query( $conn, $sql ) ) {
-		echo "Record deleted successfully";
+		echo "<p>مخاطب مورد نظر با موفقیت حذف گردید</p>";
 	} else {
 		echo "Error deleting record: " . mysqli_error( $conn );
 	}
@@ -25,7 +24,8 @@
 	mysqli_close( $conn );
 	?>
 
-	<p align="center"><input type="button" value="بازگشت" onclick="window.location.href='index.php'"/>
+	<p align="center">
+		<input type="button" value="بازگشت" onclick="window.location.href='index.php'"/>
 	</p>
 
 </body>

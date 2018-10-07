@@ -11,7 +11,7 @@
 		<form>
 			<p align="center"><input type="button" value="مخاطب جدید" onclick="window.location.href='form.php'" /></p>
 			<p align="center"><input type="button" value="لیست مخاطبین" onclick="window.location.href='dbread.php'" /></p>
-			<p align="center"><input type="button" value="حذف مخاطبین" onclick="window.location.href='delete.php'" /></p>
+			<p align="center"><input type="button" value="جستجو" onclick="window.location.href='delete.php'" /></p>
 		</form>
 		
     </body>
