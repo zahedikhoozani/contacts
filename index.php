@@ -11,9 +11,9 @@
 		
 		<?php 
 $servername = "localhost";
-$username = "idehsa_address";
-$password = "708090100Asd";
-$dbname = "idehsa_address";
+$username = "***";
+$password = "***";
+$dbname = "***";
 
 // Create connection
 	mysql_connect( $servername, $username, $password ) or die(mysql_error()); 
