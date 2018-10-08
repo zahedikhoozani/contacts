@@ -10,7 +10,9 @@ body {
 	font-family:BYekan;
 	background-color: azure;
 }
-
+h1,h2,h3 {
+	text-align:right
+}
 h1 {
 	color: blue;
 }
@@ -27,10 +29,6 @@ input {
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
-}
-
-button {
-	width: 50%;
 }
 
 input[type=text] {
