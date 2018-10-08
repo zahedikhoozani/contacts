@@ -51,6 +51,40 @@ $self = $_SERVER['PHP_SELF'];
 	 mysql_query ("INSERT INTO address (name, family, phone) VALUES ('$name', '$family', '$phone')");
 	 }
 	?>
+	    <?php
+		if ( $mode=="edit") 
+	 { 
+	 Print '<h2>ویرایش تماس</h2> 
+	 <p> 
+	 <form action=';
+	 echo $self; 
+	 Print '
+	 method=GET> 
+	 <table> 
+	 <tr><td>نام:</td><td><input type="text" value="'; 
+	 Print $name; 
+	 print '" name="name" /></td></tr> 
+	 <tr><td>نام خانوادگی:</td><td><input type="text" value="'; 
+	 Print $family; 
+	 print '" name="family" /></td></tr> 
+	 <tr><td>تلفن:</td><td><input type="text" value="'; 
+	 Print $phone; 
+	 print '" name="phone" /></td></tr> 
+	 <tr><td colspan="2" align="center"><input type="submit" value="ثبت"/></td></tr> 
+	 <input type=hidden name=mode value=edited> 
+	 <input type=hidden name=id value='; 
+	 Print $id; 
+	 print '> 
+	 </table> 
+	 </form> <p>'; 
+	 } 
+	 
+	 if ( $mode=="edited") 
+	 { 
+	 mysql_query ("UPDATE address SET name = '$name', phone = '$phone', email = '$email' WHERE id = $id"); 
+	 Print "Data Updated!<p>"; 
+	 } 
+	 ?>
 	<?php
 
 		if ( $mode=="remove") 
