@@ -2,12 +2,11 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Untitled Document</title>
 </head>
 
 <body>
 	<?php
-
+////////////////////////////////////////viewrecords/////////////////////////////////////////
 	function viewrecords() {
 		require( 'config.php' );
 		$sql = "SELECT fname, lname, phone FROM data";
@@ -15,6 +14,7 @@
 		$result = mysqli_query( $conn, $sql );
 
 		echo '<form action="' . $_SERVER[ 'PHP_SELF' ] . '" method="post">';
+		echo '<input type="hidden" name="mod" value="delete">';
 
 		$tblhd = '<table align="center" style="width:50%" border="1">
 			<tr>
@@ -53,14 +53,14 @@
 	?>
 
 	<?php
-
+////////////////////////////////////////delete rocords/////////////////////////////////////////
 	function deleterecord( $phone ) {
 		require( 'config.php' );
 		// sql to delete a record
 		$sql = "DELETE FROM data WHERE phone=$phone";
 
 		if ( mysqli_query( $conn, $sql ) ) {
-			echo "<script>alert ('مخاطب مورد نظر با موفقیت حذف گردید');</script>";
+			echo "<p>مخاطب مورد نظر با موفقیت حذف گردید</p>";
 		} else {
 			echo "Error deleting record: " . mysqli_error( $conn );
 		}
@@ -70,7 +70,7 @@
 	?>
 
 	<?php
-
+////////////////////////////////////////search/////////////////////////////////////////
 	function search( $name ) {
 		require( 'config.php' );
 
@@ -113,6 +113,7 @@
 	?>
 
 	<?php
+////////////////////////////////////////add record/////////////////////////////////////////
 
 	function addrecord( $fname, $lname, $phone ) {
 

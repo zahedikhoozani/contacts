@@ -12,29 +12,42 @@
 	<?php
 	require_once( "functions.php" );
 
-	if ( $_SERVER[ "REQUEST_METHOD" ] == "POST" && 1 ) {
+	if ( $_SERVER[ "REQUEST_METHOD" ] == "POST" ) {
+		$mod = $_POST[ 'mod' ];
+	} else {
+		$mod = "";
+		viewrecords();
+	}
+
+	if ($mod == "delete" ) {
 		// collect value of input field
 		$phone = $_POST[ 'phonenum' ];
 		deleterecord( $phone );
+		viewrecords();
 	}
-
-	if ( $_SERVER[ "REQUEST_METHOD" ] == "POST" && 1 ) {
-		// collect value of input field
-		$name = $_POST[ 'search' ];
-		search( $name );
-	}
-
-	if ( $_SERVER[ "REQUEST_METHOD" ] != "POST" ) {
+	
+	if ($mod == "viewrecords" ) {
 		// collect value of input field
 		viewrecords();
 	}
 
-	if ( $_SERVER[ "REQUEST_METHOD" ] == "POST" && $_POST[ "mod" ] == "addrecord" ) {
+	if ( $mod == "search" ) {
+		// collect value of input field
+		$name = $_POST[ 'search' ];
+		search( $name );
+		echo '<form action="' . $_SERVER[ "PHP_SELF" ] . '" method="post"">
+		<input type="hidden" name="mod" value="viewrecords">
+		<input type="submit" value="بازگشت">
+		</form>';
+	}
+
+	if ( $mod == "addrecord" ) {
 		// collect value of input field
 		$fname = $_POST[ "fname" ];
 		$lname = $_POST[ "lname" ];
 		$phone = $_POST[ "mob" ];
 		addrecord( $fname, $lname, $phone );
+		viewrecords();
 	}
 
 	?>
@@ -42,6 +55,7 @@
 	<form action="<?php echo $_SERVER[ 'PHP_SELF' ] ?>" method="post">
 		<p align="center">
 			<input style="width: 35%;" type="text" name="search" value="زاهدی"/>
+			<input type="hidden" name="mod" value="search">
 			<input type="submit" value="جستجو"/>
 		</p>
 	</form>

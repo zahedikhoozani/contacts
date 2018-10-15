@@ -18,7 +18,7 @@ p {
 }
 input {
 	font-family: BYekan;
-	width: 100%;
+	width: 35%;
 	padding: 12px 20px;
 	margin: 8px 0;
 	box-sizing: border-box;
@@ -28,6 +28,7 @@ input[type=text]:focus {
 	border-radius: 4px;
 	background-color: powderblue;
 	color: black;
+	width: 35%;
 }
 input[type=button], input[type=submit], input[type=reset] {
 	width: 14%;
