@@ -17,12 +17,17 @@
 		$phone = $_POST[ 'phonenum' ];
 		deleterecord( $phone );
 	}
+	
 	if ( $_SERVER[ "REQUEST_METHOD" ] == "POST" && 1 ) {
 		// collect value of input field
 		$name = $_POST[ 'search' ];
 		search( $name );
 	}
-	viewrecords();
+	
+	if ( $_SERVER[ "REQUEST_METHOD" ] != "POST") {
+		// collect value of input field
+		viewrecords();
+	}
 	?>
 
 	<form action="<?php echo $_SERVER[ 'PHP_SELF' ] ?>" method="post">

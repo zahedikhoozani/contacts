@@ -14,17 +14,19 @@
 		mysqli_query( $conn, 'set names "utf8"' );
 		$result = mysqli_query( $conn, $sql );
 
-		echo '<form action="' . $_SERVER[ 'PHP_SELF' ] . '" method="post">
+		echo '<form action="' . $_SERVER[ 'PHP_SELF' ] . '" method="post">';
 
-		<table align="center" style="width:50%" border="1">
+		$tblhd='<table align="center" style="width:50%" border="1">
 			<tr>
 				<th>انتخاب</th>
 				<th>نام</th>
 				<th>نام خانوادگی</th>
 				<th>شماره تلفن</th>
 			</tr>';
+		
 		if ( mysqli_num_rows( $result ) > 0 ) {
 			// output data of each row
+			echo $tblhd;
 			$td1 = "<td align='center'>";
 			$td2 = "</td>";
 			while ( $row = mysqli_fetch_assoc( $result ) ) {
@@ -37,7 +39,7 @@
 			}
 			echo "</table>";
 		} else {
-			echo "0 results";
+			echo "<p>مخاطبی با مشخصات خواسته شده یافت نشد.</p>";
 		}
 		mysqli_close( $conn );
 		echo '<p align="center">
@@ -75,13 +77,13 @@
 		$query = "SELECT * FROM `data` WHERE `fname` LIKE '" . $name . "' OR (`lname` LIKE '" . $name . "')";
 		mysqli_query( $conn, 'set names "utf8"' );
 		$result = mysqli_query( $conn, $query );
-       
+
 		echo '<script>
             document.body.innerHTML = "";
         </script>';
 
-		echo '<form action="' . $_SERVER[ 'PHP_SELF' ] . '" method="post">
-		<table align="center" style="width:50%" border="1">
+		echo '<form action="' . $_SERVER[ 'PHP_SELF' ] . '" method="post">';
+		$tblhd = '<table align="center" style="width:50%" border="1">
 			<tr>
 				<th>انتخاب</th>
 				<th>نام</th>
@@ -91,6 +93,7 @@
 
 		if ( mysqli_num_rows( $result ) > 0 ) {
 			// output data of each row
+			echo $tblhd;
 			$td1 = "<td align='center'>";
 			$td2 = "</td>";
 			while ( $row = mysqli_fetch_assoc( $result ) ) {
@@ -103,7 +106,7 @@
 			}
 			echo "</table>";
 		} else {
-			echo "0 results";
+			echo "<p>مخاطبی با مشخصات خواسته شده یافت نشد.</p>";
 		}
 		mysqli_close( $conn );
 	}
