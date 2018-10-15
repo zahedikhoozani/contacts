@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html dir="rtl">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -18,14 +17,14 @@
 		$phone = $_POST[ 'phonenum' ];
 		deleterecord( $phone );
 	}
-	
+
 	if ( $_SERVER[ "REQUEST_METHOD" ] == "POST" && 1 ) {
 		// collect value of input field
 		$name = $_POST[ 'search' ];
 		search( $name );
 	}
-	
-	if ( $_SERVER[ "REQUEST_METHOD" ] != "POST") {
+
+	if ( $_SERVER[ "REQUEST_METHOD" ] != "POST" ) {
 		// collect value of input field
 		viewrecords();
 	}

@@ -16,14 +16,14 @@
 
 		echo '<form action="' . $_SERVER[ 'PHP_SELF' ] . '" method="post">';
 
-		$tblhd='<table align="center" style="width:50%" border="1">
+		$tblhd = '<table align="center" style="width:50%" border="1">
 			<tr>
 				<th>انتخاب</th>
 				<th>نام</th>
 				<th>نام خانوادگی</th>
 				<th>شماره تلفن</th>
 			</tr>';
-		
+
 		if ( mysqli_num_rows( $result ) > 0 ) {
 			// output data of each row
 			echo $tblhd;
