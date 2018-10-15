@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-<html>
+<!--<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>دفتر تلفن</title>
@@ -118,7 +117,7 @@ $self = $_SERVER['PHP_SELF'];
 		
     </body>
 </html>
-=======
+-->
 <html dir="rtl">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -158,4 +157,3 @@ $self = $_SERVER['PHP_SELF'];
 	</form>
 </body>
 </html>
->>>>>>> all-in-one-page
