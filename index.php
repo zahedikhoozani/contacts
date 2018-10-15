@@ -28,6 +28,15 @@
 		// collect value of input field
 		viewrecords();
 	}
+
+	if ( $_SERVER[ "REQUEST_METHOD" ] == "POST" && $_POST[ "mod" ] == "addrecord" ) {
+		// collect value of input field
+		$fname = $_POST[ "fname" ];
+		$lname = $_POST[ "lname" ];
+		$phone = $_POST[ "mob" ];
+		addrecord( $fname, $lname, $phone );
+	}
+
 	?>
 
 	<form action="<?php echo $_SERVER[ 'PHP_SELF' ] ?>" method="post">

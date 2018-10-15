@@ -111,5 +111,26 @@
 		mysqli_close( $conn );
 	}
 	?>
+
+	<?php
+
+	function addrecord( $fname, $lname, $phone ) {
+
+		require( 'config.php' );
+
+		$sql = "INSERT INTO data (fname, lname, phone)
+			VALUES ('$fname', '$lname', '$phone')";
+
+		mysqli_query( $conn, 'set names "utf8"' );
+		if ( mysqli_query( $conn, $sql ) ) {
+			echo "<p align='right'>مخاطب جدید با موفقیت ذخیره شد</p>";
+		} else {
+			echo "Error: " . $sql . "<br>" . mysqli_error( $conn );
+		}
+
+		mysqli_close( $conn );
+
+	}
+	?>
 </body>
 </html>
