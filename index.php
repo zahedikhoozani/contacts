@@ -19,14 +19,17 @@
 		viewrecords();
 	}
 
-	if ($mod == "delete" ) {
+	if ( $mod == "delete" ) {
 		// collect value of input field
-		$phone = $_POST[ 'phonenum' ];
-		deleterecord( $phone );
-		viewrecords();
+		$id = $_POST[ 'id' ];
+		deleterecord( $id );
+		echo '<form action="' . $_SERVER[ "PHP_SELF" ] . '" method="post"">
+		<input type="hidden" name="mod" value="viewrecords">
+		<p align="center"><input type="submit" value="بازگشت"></p>
+		</form>';
 	}
-	
-	if ($mod == "viewrecords" ) {
+
+	if ( $mod == "viewrecords" ) {
 		// collect value of input field
 		viewrecords();
 	}
@@ -37,7 +40,7 @@
 		search( $name );
 		echo '<form action="' . $_SERVER[ "PHP_SELF" ] . '" method="post"">
 		<input type="hidden" name="mod" value="viewrecords">
-		<input type="submit" value="بازگشت">
+		<p align="center"><input type="submit" value="بازگشت"></p>
 		</form>';
 	}
 
@@ -47,6 +50,15 @@
 		$lname = $_POST[ "lname" ];
 		$phone = $_POST[ "mob" ];
 		addrecord( $fname, $lname, $phone );
+		viewrecords();
+	}
+	
+	if ( $mod == "edit" ) {
+		// collect value of input field
+		$fname = $_POST[ "fname" ];
+		$lname = $_POST[ "lname" ];
+		$phone = $_POST[ "mob" ];
+		editing( $fname, $lname, $phone );
 		viewrecords();
 	}
 
@@ -59,5 +71,14 @@
 			<input type="submit" value="جستجو"/>
 		</p>
 	</form>
+	
+<!--	
+	<form action="<?php //echo $_SERVER[ 'PHP_SELF' ] ?>" method="post">
+		<p align="center">
+			<input type="hidden" name="mod" value="edit">
+			<input type="submit" value="ویرایش"/>
+		</p>
+	</form>
+-->
 </body>
 </html>

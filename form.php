@@ -8,11 +8,11 @@
 
 <body>
 	<form action="index.php" method="POST">
-		<p align="right">نام:<input type="text" name="fname" size="32">
+		<p align="center">نام:<br/><input type="text" name="fname" size="32">
 		</p>
-		<p align="right">نام خانوادگی:<input type="text" name="lname" size="32">
+		<p align="center">نام خانوادگی:<br/><input type="text" name="lname" size="32">
 		</p>
-		<p align="right">شماره تلفن:<input type="text" name="mob" size="20">
+		<p align="center">شماره تلفن:<br/><input type="text" name="mob" size="20">
 		</p>
 		<input type="hidden" name="mod" value="addrecord">
 

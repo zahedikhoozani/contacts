@@ -6,10 +6,10 @@
 
 <body>
 	<?php
-////////////////////////////////////////viewrecords/////////////////////////////////////////
+	////////////////////////////////////////viewrecords/////////////////////////////////////////
 	function viewrecords() {
 		require( 'config.php' );
-		$sql = "SELECT fname, lname, phone FROM data";
+		$sql = "SELECT id, fname, lname, phone FROM data";
 		mysqli_query( $conn, 'set names "utf8"' );
 		$result = mysqli_query( $conn, $sql );
 
@@ -31,10 +31,10 @@
 			$td2 = "</td>";
 			while ( $row = mysqli_fetch_assoc( $result ) ) {
 				echo "<tr>";
-				echo $td1 . "<input type='radio' name='phonenum' value=" . $row[ "phone" ] . ">" . $td2;
+				echo $td1 . "<input type='radio' name='id' value=" . $row[ "id" ] . ">" . $td2;
 				echo $td1 . $row[ "fname" ] . $td2;
 				echo $td1 . $row[ "lname" ] . $td2;
-				echo "<td align='center' id=" . $row[ "phone" ] . ">" . $row[ "phone" ] . $td2;
+				echo "<td align='center' id=" . $row[ "id" ] . ">" . $row[ "phone" ] . $td2;
 				echo "</tr>";
 			}
 			echo "</table>";
@@ -53,11 +53,11 @@
 	?>
 
 	<?php
-////////////////////////////////////////delete rocords/////////////////////////////////////////
-	function deleterecord( $phone ) {
+	////////////////////////////////////////delete rocords/////////////////////////////////////////
+	function deleterecord( $id ) {
 		require( 'config.php' );
 		// sql to delete a record
-		$sql = "DELETE FROM data WHERE phone=$phone";
+		$sql = "DELETE FROM data WHERE id=$id";
 
 		if ( mysqli_query( $conn, $sql ) ) {
 			echo "<p>مخاطب مورد نظر با موفقیت حذف گردید</p>";
@@ -70,7 +70,7 @@
 	?>
 
 	<?php
-////////////////////////////////////////search/////////////////////////////////////////
+	////////////////////////////////////////search/////////////////////////////////////////
 	function search( $name ) {
 		require( 'config.php' );
 
@@ -98,7 +98,7 @@
 			$td2 = "</td>";
 			while ( $row = mysqli_fetch_assoc( $result ) ) {
 				echo "<tr>";
-				echo $td1 . "<input type='radio' name='phonenum' value=" . $row[ "phone" ] . ">" . $td2;
+				echo $td1 . "<input type='radio' name='id' value=" . $row[ "id" ] . ">" . $td2;
 				echo $td1 . $row[ "fname" ] . $td2;
 				echo $td1 . $row[ "lname" ] . $td2;
 				echo "<td align='center' id=" . $row[ "phone" ] . ">" . $row[ "phone" ] . $td2;
@@ -113,7 +113,7 @@
 	?>
 
 	<?php
-////////////////////////////////////////add record/////////////////////////////////////////
+	////////////////////////////////////////add record/////////////////////////////////////////
 
 	function addrecord( $fname, $lname, $phone ) {
 
@@ -131,6 +131,29 @@
 
 		mysqli_close( $conn );
 
+	}
+	?>
+
+	<?php
+	////////////////////////////////////////edit record/////////////////////////////////////////
+	function editrecord( $fname, $lname, $phone ) {
+		echo '<form action="index.php" method="POST">
+		<p align="center">نام:<br/><input type="text" name="fname" size="32" value="' . $fname . '">
+		</p>
+		<p align="center">نام خانوادگی:<br/><input type="text" name="lname" size="32" value="' . $lname . '">
+		</p>
+		<p align="center">شماره تلفن:<br/><input type="text" name="mob" size="20" value="' . $phone . '">
+		</p>
+		<input type="hidden" name="mod" value="editrecord">
+
+		<p align="center">
+			<input type="submit" value="ثبت" name="Submit">
+			<input type="reset" value="پاک کردن" name="B2">
+		</p>
+		</form>
+			<p align="center">
+			<input type="button" value="بازگشت" onclick="window.location.href=\'index.php\'"/>
+		</p>';
 	}
 	?>
 </body>
