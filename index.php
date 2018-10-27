@@ -103,11 +103,11 @@
 
 	if ( $mod == "editrecord" ) {
 		// collect value of input field
-
+		$id=$_POST["id"];
 		$fname = $_POST[ "fname" ];
 		$lname = $_POST[ "lname" ];
 		$phone = $_POST[ "mob" ];
-		editrecord( $fname, $lname, $phone );
+		editrecord( $id, $fname, $lname, $phone );
 		viewrecords();
 	}
 

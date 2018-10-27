@@ -163,6 +163,7 @@
 		<p align="center">شماره تلفن:<br/><input type="text" name="mob" size="20" value="' . $row[ 'phone' ] . '">
 		</p>
 		<input type="hidden" name="mod" value="editrecord">
+		<input type="hidden" name="id" value="'.$id.'">
 
 		<p align="center">
 			<input type="submit" value="ثبت" name="Submit">
@@ -176,11 +177,11 @@
 	}
 	
 	
-	function editrecord( $fname, $lname, $phone ) {
+	function editrecord($id, $fname, $lname, $phone ) {
 
 		require( 'config.php' );
 
-		$sql = "UPDATE `data` SET `fname` = '$fname', `lname` = '$lname', `phone` = '$phone' WHERE `data`.`id` = 65";
+		$sql = "UPDATE `data` SET `fname` = '$fname', `lname` = '$lname', `phone` = '$phone' WHERE `data`.`id` = $id";
 
 		mysqli_query( $conn, 'set names "utf8"' );
 		if ( mysqli_query( $conn, $sql ) ) {
