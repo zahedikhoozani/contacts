@@ -14,7 +14,7 @@
 		$result = mysqli_query( $conn, $sql );
 
 		echo '<form action="' . $_SERVER[ 'PHP_SELF' ] . '" method="post">';
-		//echo '<input type="hidden" name="mod" value="delete">';
+		echo '<input type="hidden" name="mod" value="delete">';
 
 		$tblhd = '<table align="center" style="width:50%" border="1">
 			<tr>
@@ -39,27 +39,15 @@
 			}
 			echo "</table>";
 		} else {
-			echo "<p class='notif'>مخاطبی با مشخصات خواسته شده یافت نشد.</p>";
+			echo "<p>مخاطبی با مشخصات خواسته شده یافت نشد.</p>";
 		}
 		mysqli_close( $conn );
-
-		echo '<p align="center">عملیات: 
-				<select name="mod">
-				<option value="addrecordform">مخاطب جدید</option>
-				<option value="delete">حذف</option>
-				<option value="editform">ویرایش</option>
-				</select>
-				<input type="submit" value="اعمال"/>
-				</p>
-				</form>';
-		echo '<form action="index.php" method="post">
-		<p align="center">
-			<input style="width: 35%;" type="text" name="search" value="زاهدی"/>
-			<input type="hidden" name="mod" value="search">
-			<input type="submit" value="جستجو"/>
-		</p>
+		echo '<p align="center">
+		<input type="button" value="مخاطب جدید" onclick="window.location.href=\'form.php\'"/>
+		<input type="submit" value="ویرایش"/>
+		<input type="submit" value="حذف"/>
+	</p>
 	</form>';
-
 	}
 
 	?>
@@ -72,7 +60,7 @@
 		$sql = "DELETE FROM data WHERE id=$id";
 
 		if ( mysqli_query( $conn, $sql ) ) {
-			echo "<p class='notif'>مخاطب مورد نظر با موفقیت حذف گردید</p>";
+			echo "<p>مخاطب مورد نظر با موفقیت حذف گردید</p>";
 		} else {
 			echo "Error deleting record: " . mysqli_error( $conn );
 		}
@@ -118,7 +106,7 @@
 			}
 			echo "</table>";
 		} else {
-			echo "<p class='notif'>مخاطبی با مشخصات خواسته شده یافت نشد.</p>";
+			echo "<p>مخاطبی با مشخصات خواسته شده یافت نشد.</p>";
 		}
 		mysqli_close( $conn );
 	}
@@ -148,19 +136,13 @@
 
 	<?php
 	////////////////////////////////////////edit record/////////////////////////////////////////
-	function editform ($id){
-		require( 'config.php' );
-		$sql = "SELECT fname, lname, phone FROM data WHERE id='$id'";
-		mysqli_query( $conn, 'set names "utf8"' );
-		$result = mysqli_query( $conn, $sql );
-		$row = mysqli_fetch_assoc( $result );
-
+	function editrecord( $fname, $lname, $phone ) {
 		echo '<form action="index.php" method="POST">
-		<p align="center">نام:<br/><input type="text" name="fname" size="32" value="' . $row[ 'fname' ] . '">
+		<p align="center">نام:<br/><input type="text" name="fname" size="32" value="' . $fname . '">
 		</p>
-		<p align="center">نام خانوادگی:<br/><input type="text" name="lname" size="32" value="' . $row[ 'lname' ] . '">
+		<p align="center">نام خانوادگی:<br/><input type="text" name="lname" size="32" value="' . $lname . '">
 		</p>
-		<p align="center">شماره تلفن:<br/><input type="text" name="mob" size="20" value="' . $row[ 'phone' ] . '">
+		<p align="center">شماره تلفن:<br/><input type="text" name="mob" size="20" value="' . $phone . '">
 		</p>
 		<input type="hidden" name="mod" value="editrecord">
 
@@ -172,25 +154,6 @@
 			<p align="center">
 			<input type="button" value="بازگشت" onclick="window.location.href=\'index.php\'"/>
 		</p>';
-
-	}
-	
-	
-	function editrecord( $fname, $lname, $phone ) {
-
-		require( 'config.php' );
-
-		$sql = "UPDATE `data` SET `fname` = '$fname', `lname` = '$lname', `phone` = '$phone' WHERE `data`.`id` = 65";
-
-		mysqli_query( $conn, 'set names "utf8"' );
-		if ( mysqli_query( $conn, $sql ) ) {
-			echo "<p align='right'>مخاطب با موفقیت ویرایش شد</p>";
-		} else {
-			echo "Error: " . $sql . "<br>" . mysqli_error( $conn );
-		}
-
-		mysqli_close( $conn );
-		
 	}
 	?>
 </body>
