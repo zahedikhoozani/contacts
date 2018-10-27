@@ -9,12 +9,13 @@ body {
 }
 h1, h2, h3 {
 	text-align: center;
-	color: blue;
+	color: white;
 }
-p {
-	color: red;
+.notif {
+	color: black;
 	font-size: 18px;
 	border: 2px;
+	display: block;
 }
 input {
 	font-family: BYekan;
@@ -51,4 +52,30 @@ td {
 }
 .byekan {
 	font-family: BYekan;
+}
+select {
+	font-family: BYekan;
+	background-color: greenyellow;
+	font-size: 16px;
+}
+.footer {
+	position: relative;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+	background-color: darkgreen;
+	color: white;
+	text-align: right;
+}
+.header {
+	position: relative;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 50px;
+	background-color: darkgreen;
+	color: white;
+	text-align: center;
+	
 }
