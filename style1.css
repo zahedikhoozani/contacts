@@ -56,7 +56,7 @@ td {
 select {
 	font-family: BYekan;
 	background-color: greenyellow;
-	font-size: 16px;
+	font-size: 18px;
 }
 .footer {
 	position: relative;
@@ -77,5 +77,18 @@ select {
 	background-color: darkgreen;
 	color: white;
 	text-align: center;
-	
+}
+button {
+	font-family: BYekan;
+	width: 14%;
+	background-color: green;
+	border: none;
+	color: white;
+	padding: 12px 20px;
+	text-decoration: none;
+	cursor: pointer;
+	font-size: 18px;
+	margin: 10px;
+	border-radius: 8px;
+	display: inline;
 }

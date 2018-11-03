@@ -4,6 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html" ; charset="utf-8">
 	<title>دفتر تلفن</title>
 	<link rel="stylesheet" href="style1.css" type="text/css">
+	<!--<script src="cnfrm.js"></script>-->
 </head>
 
 <body>
@@ -30,15 +31,15 @@
 
 		deleterecord( $id );
 		?>
-		<form action="<?php $_SERVER[ "PHP_SELF" ] ?>" method="post">
-			<input type="hidden" name="mod" value="viewrecords">
-			<p align="center">
-				<input type="submit" value="بازگشت">
-			</p>
-		</form>
+	<form action="index.php" method="post">
+		<input type="hidden" name="mod" value="viewrecords">
+		<p align="center">
+			<input type="submit" value="بازگشت">
+		</p>
+	</form>
 
 	<?php	}	?>
-	
+
 	<?php
 	///////////////////////////////////////////mod=view records////////////////////////////////////////////////
 	if ( $mod == "viewrecords" ) {
@@ -60,7 +61,7 @@
 	}
 	?>
 	<?php
-		///////////////////////////////////////////mod=delete////////////////////////////////////////////////
+	///////////////////////////////////////////mod=delete////////////////////////////////////////////////
 	if ( $mod == "addrecordform" ) {
 		// collect value of input field
 		echo '<form action="index.php" method="POST">
@@ -92,9 +93,9 @@
 		addrecord( $fname, $lname, $phone );
 		viewrecords();
 	}
-	?> 
+	?>
 	<?php
-///////////////////////////////////////////mod=edit////////////////////////////////////////////////
+	///////////////////////////////////////////mod=edit////////////////////////////////////////////////
 	if ( $mod == "editform" ) {
 		// collect value of input field
 		$id = $_POST[ 'id' ];
@@ -103,7 +104,7 @@
 
 	if ( $mod == "editrecord" ) {
 		// collect value of input field
-		$id=$_POST["id"];
+		$id = $_POST[ "id" ];
 		$fname = $_POST[ "fname" ];
 		$lname = $_POST[ "lname" ];
 		$phone = $_POST[ "mob" ];
@@ -112,17 +113,15 @@
 	}
 
 	?>
+
 	<br>
 	<div class="footer">
 		برنامه نویس: کریم زاهدی
 		<br> صفحه برنامه در github.com: zahedikhoozani/contacts
 	</div>
-
+	
 	<script>
-		setTimeout( function () {
-			document.getElementsByClassName( "notif" ).style.display = "none";
-		}, 1000 );
-	</script>
 
+	</script>
 </body>
 </html>

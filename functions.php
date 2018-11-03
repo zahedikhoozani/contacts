@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<script src="cnfrm.js"></script>
 </head>
 
 <body>
@@ -13,9 +14,7 @@
 		mysqli_query( $conn, 'set names "utf8"' );
 		$result = mysqli_query( $conn, $sql );
 
-		echo '<form action="' . $_SERVER[ 'PHP_SELF' ] . '" method="post">';
-		//echo '<input type="hidden" name="mod" value="delete">';
-
+		echo '<form id="frm" action="' . $_SERVER[ 'PHP_SELF' ] . '" method="post">';
 		$tblhd = '<table align="center" style="width:50%" border="1">
 			<tr>
 				<th>انتخاب</th>
@@ -34,12 +33,12 @@
 				echo $td1 . "<input type='radio' name='id' value=" . $row[ "id" ] . ">" . $td2;
 				echo $td1 . $row[ "fname" ] . $td2;
 				echo $td1 . $row[ "lname" ] . $td2;
-				echo "<td align='center' id=" . $row[ "id" ] . ">" . $row[ "phone" ] . $td2;
+				echo $td1 . $row[ "phone" ] . $td2;
 				echo "</tr>";
 			}
 			echo "</table>";
 		} else {
-			echo "<p class='notif'>مخاطبی با مشخصات خواسته شده یافت نشد.</p>";
+			echo "<p>مخاطبی با مشخصات خواسته شده یافت نشد.</p>";
 		}
 		mysqli_close( $conn );
 
@@ -49,9 +48,10 @@
 				<option value="delete">حذف</option>
 				<option value="editform">ویرایش</option>
 				</select>
-				<input type="submit" value="اعمال"/>
+				<input type="button" value="اعمال" onclick="cnfrm()"/>
 				</p>
 				</form>';
+		echo '<div id="jsfrm"></div>';
 		echo '<form action="index.php" method="post">
 		<p align="center">
 			<input style="width: 35%;" type="text" name="search" value="زاهدی"/>
@@ -59,7 +59,6 @@
 			<input type="submit" value="جستجو"/>
 		</p>
 	</form>';
-
 	}
 
 	?>
@@ -148,7 +147,7 @@
 
 	<?php
 	////////////////////////////////////////edit record/////////////////////////////////////////
-	function editform ($id){
+	function editform( $id ) {
 		require( 'config.php' );
 		$sql = "SELECT fname, lname, phone FROM data WHERE id='$id'";
 		mysqli_query( $conn, 'set names "utf8"' );
@@ -163,7 +162,7 @@
 		<p align="center">شماره تلفن:<br/><input type="text" name="mob" size="20" value="' . $row[ 'phone' ] . '">
 		</p>
 		<input type="hidden" name="mod" value="editrecord">
-		<input type="hidden" name="id" value="'.$id.'">
+		<input type="hidden" name="id" value="' . $id . '">
 
 		<p align="center">
 			<input type="submit" value="ثبت" name="Submit">
@@ -175,9 +174,9 @@
 		</p>';
 
 	}
-	
-	
-	function editrecord($id, $fname, $lname, $phone ) {
+
+
+	function editrecord( $id, $fname, $lname, $phone ) {
 
 		require( 'config.php' );
 
@@ -191,7 +190,7 @@
 		}
 
 		mysqli_close( $conn );
-		
+
 	}
 	?>
 </body>
